@@ -1,7 +1,7 @@
 from fastapi import Depends
 from supabase import Client, create_client
 
-from dependencies import get_access_token, get_refresh_token
+from src.auth.dependencies import get_access_token, get_refresh_token
 from src.config import Config
 
 
