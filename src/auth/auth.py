@@ -3,15 +3,15 @@ from gotrue import AuthResponse as GoTrueAuthResponse  # type: ignore
 from gotrue.errors import AuthApiError  # type: ignore
 
 from src.auth.schemas import LoginRequest, RegisterRequest
-from src.utils.responses import AuthResponse
-from src.session import Session
 from src.db.dao import CustomerDAO
 from src.db.models import Customer
+from src.session import Session
+from src.utils.responses import AuthResponse
 
 
-def register(request: RegisterRequest, user_dao: CustomerDAO) -> AuthResponse:
+def register(request: RegisterRequest, customer_dao: CustomerDAO) -> AuthResponse:
     try:
-        result = user_dao.client.auth.sign_up(request.auth_model_dump())
+        result = customer_dao.client.auth.sign_up(request.auth_model_dump())
         customer = Customer.validate_supabase_user(result.customer)
         return AuthResponse(customer=customer)
     except AuthApiError as e:
@@ -26,14 +26,14 @@ def register(request: RegisterRequest, user_dao: CustomerDAO) -> AuthResponse:
         )
 
 
-def login(request: LoginRequest, user_dao: CustomerDAO) -> AuthResponse:
+def login(request: LoginRequest, customer_dao: CustomerDAO) -> AuthResponse:
     try:
-        if not user_dao.get_by_query(email=request.email):
+        if not customer_dao.get_by_query(email=request.email):
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail="Customer not found",
             )
-        result: GoTrueAuthResponse = user_dao.client.auth.sign_in_with_password(
+        result: GoTrueAuthResponse = customer_dao.client.auth.sign_in_with_password(
             request.auth_model_dump()
         )
         customer = Customer.validate_supabase_user(result.customer)

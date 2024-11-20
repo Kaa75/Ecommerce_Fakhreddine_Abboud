@@ -4,12 +4,12 @@ import sys
 from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
-from src.auth.router import auth_router
 
+from src.auth.router import auth_router
 from src.config import Config
 
 # Add the project root to sys.path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 app = FastAPI(
     title=Config.APP.TITLE,
@@ -26,6 +26,7 @@ app.add_middleware(
 )
 
 app.include_router(auth_router)
+
 
 @app.get("/", response_class=HTMLResponse)
 async def root() -> HTMLResponse:

@@ -8,14 +8,22 @@ from src.db.dao import CustomerDAO, InventoryDAO
 def get_customer_dao(client: Client = Depends(get_authenticated_client)) -> CustomerDAO:
     return CustomerDAO(client)
 
+
 # def get_history_dao(client: Client = Depends(get_authenticated_client)) -> HistoryDAO:
 #     return HistoryDAO(client)
 
-def get_inventory_dao(client: Client = Depends(get_authenticated_client)) -> InventoryDAO:
+
+def get_inventory_dao(
+    client: Client = Depends(get_authenticated_client),
+) -> InventoryDAO:
     return InventoryDAO(client)
+
 
 # def get_review_dao(client: Client = Depends(get_authenticated_client)) -> ReviewDAO:
 #     return ReviewDAO(client)
 
-def get_customer_dao_unauthenticated(client: Client = Depends(get_unauthenticated_client)) -> CustomerDAO:
+
+def get_customer_dao_unauthenticated(
+    client: Client = Depends(get_unauthenticated_client),
+) -> CustomerDAO:
     return CustomerDAO(client)

@@ -14,11 +14,11 @@ from src.auth.schemas import (
     VerifyOTPRequest,
 )
 from src.auth.verify_otp import verify_otp
-from src.utils.responses import APIResponse
-from src.utils.responses.API_response import APIResponse
 from src.db.dao import CustomerDAO
 from src.db.dao.customer_dao import CustomerDAO
-from src.db.dependencies import get_Customer_dao, get_Customer_dao_unauthenticated
+from src.db.dependencies import get_customer_dao, get_customer_dao_unauthenticated
+from src.utils.responses import APIResponse
+from src.utils.responses.API_response import APIResponse
 
 auth_router = APIRouter(prefix="/auth", tags=["Authentication"])
 
@@ -31,7 +31,7 @@ auth_router = APIRouter(prefix="/auth", tags=["Authentication"])
 )
 async def register_route(
     request: RegisterRequest,
-    Customer_dao: CustomerDAO = Depends(get_Customer_dao_unauthenticated),
+    Customer_dao: CustomerDAO = Depends(get_customer_dao_unauthenticated),
 ) -> APIResponse:
     if Customer_dao.get_by_query(email=request.email):
         return APIResponse(
@@ -53,7 +53,7 @@ async def register_route(
 )
 async def login_route(
     request: LoginRequest,
-    Customer_dao: CustomerDAO = Depends(get_Customer_dao_unauthenticated),
+    Customer_dao: CustomerDAO = Depends(get_customer_dao_unauthenticated),
 ) -> APIResponse:
     return APIResponse(
         message="Login successful",
@@ -70,7 +70,7 @@ async def login_route(
 )
 async def reset_password_route(
     request: ResetPasswordRequest,
-    Customer_dao: CustomerDAO = Depends(get_Customer_dao),
+    Customer_dao: CustomerDAO = Depends(get_customer_dao),
 ) -> APIResponse:
     return APIResponse(
         message="Password change successful",
@@ -87,7 +87,7 @@ async def reset_password_route(
 )
 async def forgot_password_route(
     request: ForgetPasswordRequest,
-    Customer_dao: CustomerDAO = Depends(get_Customer_dao_unauthenticated),
+    Customer_dao: CustomerDAO = Depends(get_customer_dao_unauthenticated),
 ) -> APIResponse:
     return APIResponse(
         message="Forget password email sent successfully",
@@ -103,7 +103,7 @@ async def forgot_password_route(
     description="Refresh Customer token",
 )
 async def refresh_token_route(
-    Customer_dao: CustomerDAO = Depends(get_Customer_dao),
+    Customer_dao: CustomerDAO = Depends(get_customer_dao),
 ) -> APIResponse:
     return APIResponse(
         message="Token refresh successful",
@@ -120,7 +120,7 @@ async def refresh_token_route(
 )
 async def request_otp_route(
     request: OTPRequest,
-    Customer_dao: CustomerDAO = Depends(get_Customer_dao_unauthenticated),
+    Customer_dao: CustomerDAO = Depends(get_customer_dao_unauthenticated),
 ) -> APIResponse:
     return APIResponse(
         message="OTP request successful",
@@ -137,7 +137,7 @@ async def request_otp_route(
 )
 async def verify_otp_route(
     request: VerifyOTPRequest,
-    Customer_dao: CustomerDAO = Depends(get_Customer_dao_unauthenticated),
+    Customer_dao: CustomerDAO = Depends(get_customer_dao_unauthenticated),
 ) -> APIResponse:
     return APIResponse(
         message="OTP verification successful",

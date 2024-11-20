@@ -2,8 +2,8 @@ from typing import Optional
 
 from pydantic import BaseModel as PydanticBaseModel
 
-from src.session import Session
 from src.db.models import Customer
+from src.session import Session
 
 
 class AuthResponse(PydanticBaseModel):

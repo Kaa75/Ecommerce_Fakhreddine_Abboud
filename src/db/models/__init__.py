@@ -4,4 +4,4 @@ from .history import History
 from .inventory import Inventory
 from .reviews import Review
 
-__all__ = ["BaseModel", "Customer", "Inventory", "History", "Review"]  
+__all__ = ["BaseModel", "Customer", "Inventory", "History", "Review"]
