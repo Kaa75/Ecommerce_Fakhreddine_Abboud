@@ -1,6 +1,6 @@
 from typing import Optional
 
-from gotrue.types import User as GoTrueUser
+from gotrue.types import User as GoTrueUser  # type: ignore
 from pydantic import EmailStr, PositiveFloat, PositiveInt
 
 from src.db.models import BaseModel
@@ -26,4 +26,7 @@ class Customer(BaseModel):
             fullname=customer.user_metadata["first last"],
             username=customer.user_metadata["username"],
             age=customer.user_metadata["age"],
+            gender=customer.user_metadata["gender"],
+            address=customer.user_metadata["address"],
+            marital_status=customer.user_metadata["marital_status"],
         )
