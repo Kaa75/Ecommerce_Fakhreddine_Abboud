@@ -1,6 +1,5 @@
 from src.auth.schemas import VerifyOTPRequest
 from src.db.dao import CustomerDAO
-from src.db.models import customer
 from src.session import Session
 from src.utils.responses.auth_response import AuthResponse
 
