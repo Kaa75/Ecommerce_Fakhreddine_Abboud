@@ -1,13 +1,18 @@
 from typing import Optional
+
+from pydantic import EmailStr, PositiveFloat, PositiveInt
+
+from src.db.models import BaseModel
 from src.utils.types.UuidStr import UuidStr
-from pydantic import BaseModel, EmailStr, PositiveInt, PositiveFloat
+
+
 class Customer(BaseModel):
     id: Optional[UuidStr] = None
-    fullname: str = None
-    # email: EmailStr = None
-    # username: str = None
-    # age: PositiveInt = None
-    # gender: str = None
-    # address: str = None
-    # marital_status: str = None
-    # wallet: PositiveFloat = None
+    fullname: str
+    email: EmailStr
+    username: str
+    age: PositiveInt
+    gender: str
+    address: str
+    marital_status: str
+    wallet: PositiveFloat = 0.0

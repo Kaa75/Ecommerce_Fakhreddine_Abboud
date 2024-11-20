@@ -1,7 +1,8 @@
 from pydantic import BaseModel as PydanticBaseModel
-from pydantic import EmailStr, NonNegativeFloat, NonNegativeInt
+from pydantic import EmailStr
 
-from src.utils.types import CourseGradeFloat, CourseStr, UuidStr
+from src.utils.types import UuidStr
+
 
 class ValidItems(PydanticBaseModel):
     uuidStr: UuidStr = "00000000-0000-0000-0000-000000000000"
@@ -30,9 +31,8 @@ class ValidData:
     class Inventory:
         uuidStr: UuidStr = "00000000-0000-0000-0000-000000000000"
         name: str = "Inventory Item"
-        quantity: int = 0
-        price: float = 0.0   
-
+        location: str = "Location"
+        
     class TestObject:
         id = ValidItems().uuidStr
         name = ""

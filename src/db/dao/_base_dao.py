@@ -2,8 +2,8 @@ from typing import Any, Generic, Optional, TypeVar
 
 from supabase import Client
 
+from src.db.models import BaseModel
 from src.utils.types import UuidStr
-from pydantic import BaseModel
 
 BaseModelType = TypeVar("BaseModelType", bound=BaseModel)
 
