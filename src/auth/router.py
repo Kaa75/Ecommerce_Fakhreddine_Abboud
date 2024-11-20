@@ -14,11 +14,11 @@ from src.auth.schemas import (
     VerifyOTPRequest,
 )
 from src.auth.verify_otp import verify_otp
-from src.utils.responses import APIResponse
-from src.utils.responses.API_response import APIResponse
 from src.db.dao import CustomerDAO
 from src.db.dao.customer_dao import CustomerDAO
 from src.db.dependencies import get_Customer_dao, get_Customer_dao_unauthenticated
+from src.utils.responses import APIResponse
+from src.utils.responses.API_response import APIResponse
 
 auth_router = APIRouter(prefix="/auth", tags=["Authentication"])
 

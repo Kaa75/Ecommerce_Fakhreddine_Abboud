@@ -1,7 +1,7 @@
 from src.auth.schemas import ResetPasswordRequest
-from src.utils.responses import AuthResponse
 from src.db.dao import CustomerDAO
 from src.db.models import Customer
+from src.utils.responses import AuthResponse
 
 
 def reset_password(request: ResetPasswordRequest, user_dao: CustomerDAO) -> AuthResponse:

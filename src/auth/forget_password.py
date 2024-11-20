@@ -1,8 +1,8 @@
 from fastapi import HTTPException, status
 
 from src.auth.schemas import ForgetPasswordRequest
-from src.utils.responses import AuthResponse
 from src.db.dao import CustomerDAO
+from src.utils.responses import AuthResponse
 
 
 def forget_password(request: ForgetPasswordRequest, user_dao: CustomerDAO) -> AuthResponse:

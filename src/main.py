@@ -4,8 +4,8 @@ import sys
 from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
-from src.auth.router import auth_router
 
+from src.auth.router import auth_router
 from src.config import Config
 
 # Add the project root to sys.path

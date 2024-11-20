@@ -1,6 +1,6 @@
 from src.auth.schemas import OTPRequest
-from src.utils.responses.auth_response import AuthResponse
 from src.db.dao import CustomerDAO
+from src.utils.responses.auth_response import AuthResponse
 
 
 def request_otp(request: OTPRequest, user_dao: CustomerDAO) -> AuthResponse:

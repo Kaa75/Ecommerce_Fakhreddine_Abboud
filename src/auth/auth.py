@@ -3,10 +3,10 @@ from gotrue import AuthResponse as GoTrueAuthResponse  # type: ignore
 from gotrue.errors import AuthApiError  # type: ignore
 
 from src.auth.schemas import LoginRequest, RegisterRequest
-from src.utils.responses import AuthResponse
-from src.session import Session
 from src.db.dao import CustomerDAO
 from src.db.models import Customer
+from src.session import Session
+from src.utils.responses import AuthResponse
 
 
 def register(request: RegisterRequest, user_dao: CustomerDAO) -> AuthResponse:

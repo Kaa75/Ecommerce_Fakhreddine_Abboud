@@ -1,7 +1,7 @@
-from src.utils.responses import AuthResponse
-from src.session import Session
 from src.db.dao.customer_dao import CustomerDAO
 from src.db.models import Customer
+from src.session import Session
+from src.utils.responses import AuthResponse
 
 
 def refresh_token(user_dao: CustomerDAO) -> AuthResponse:

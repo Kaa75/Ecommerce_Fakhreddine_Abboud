@@ -1,7 +1,7 @@
 from typing import Optional
 
-from pydantic import EmailStr, PositiveFloat, PositiveInt
 from gotrue.types import User as GoTrueUser
+from pydantic import EmailStr, PositiveFloat, PositiveInt
 
 from src.db.models import BaseModel
 from src.utils.types.UuidStr import UuidStr
