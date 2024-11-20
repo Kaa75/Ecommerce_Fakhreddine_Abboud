@@ -1,10 +1,10 @@
 from src.auth.schemas import ResetPasswordRequest
-from src.common.responses import AuthResponse
-from src.db.dao import UserDAO
-from src.db.models import User
+from src.utils.responses import AuthResponse
+from src.db.dao import CustomerDAO
+from src.db.models import Customer
 
 
-def reset_password(request: ResetPasswordRequest, user_dao: UserDAO) -> AuthResponse:
+def reset_password(request: ResetPasswordRequest, user_dao: CustomerDAO) -> AuthResponse:
     response = user_dao.client.auth.update_user({"password": request.password})
-    user = User.validate_supabase_user(response.user)
-    return AuthResponse(user=user)
+    customer = Customer.validate_supabase_user(response.customer)
+    return AuthResponse(customer=customer)

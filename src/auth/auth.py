@@ -3,17 +3,17 @@ from gotrue import AuthResponse as GoTrueAuthResponse  # type: ignore
 from gotrue.errors import AuthApiError  # type: ignore
 
 from src.auth.schemas import LoginRequest, RegisterRequest
-from src.util.responses import AuthResponse
+from src.utils.responses import AuthResponse
 from src.session import Session
-from src.db.dao import UserDAO
-from src.db.models import User
+from src.db.dao import CustomerDAO
+from src.db.models import Customer
 
 
-def register(request: RegisterRequest, user_dao: UserDAO) -> AuthResponse:
+def register(request: RegisterRequest, user_dao: CustomerDAO) -> AuthResponse:
     try:
         result = user_dao.client.auth.sign_up(request.auth_model_dump())
-        user = User.validate_supabase_user(result.user)
-        return AuthResponse(user=user)
+        customer = Customer.validate_supabase_user(result.customer)
+        return AuthResponse(customer=customer)
     except AuthApiError as e:
         if "Email rate limit exceeded" in str(e):
             raise HTTPException(
@@ -26,20 +26,20 @@ def register(request: RegisterRequest, user_dao: UserDAO) -> AuthResponse:
         )
 
 
-def login(request: LoginRequest, user_dao: UserDAO) -> AuthResponse:
+def login(request: LoginRequest, user_dao: CustomerDAO) -> AuthResponse:
     try:
         if not user_dao.get_by_query(email=request.email):
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
-                detail="User not found",
+                detail="Customer not found",
             )
         result: GoTrueAuthResponse = user_dao.client.auth.sign_in_with_password(
             request.auth_model_dump()
         )
-        user = User.validate_supabase_user(result.user)
+        customer = Customer.validate_supabase_user(result.customer)
         session = Session.validate_supabase_session(result.session)
         return AuthResponse(
-            user=user,
+            customer=customer,
             session=session,
         )
     except AuthApiError:

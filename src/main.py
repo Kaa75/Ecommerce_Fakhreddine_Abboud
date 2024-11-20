@@ -4,6 +4,7 @@ import sys
 from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
+from src.auth.router import auth_router
 
 from src.config import Config
 
@@ -23,6 +24,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(auth_router)
 
 @app.get("/", response_class=HTMLResponse)
 async def root() -> HTMLResponse:

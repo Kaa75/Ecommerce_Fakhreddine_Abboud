@@ -1,14 +1,14 @@
 from src.auth.schemas import VerifyOTPRequest
-from src.common.responses import AuthResponse
-from src.common.session import Session
-from src.db.dao import UserDAO
-from src.db.models import User
+from src.utils.responses.auth_response import AuthResponse
+from src.session import Session
+from src.db.dao import CustomerDAO
+from src.db.models import customer
 
 
-def verify_otp(request: VerifyOTPRequest, user_dao: UserDAO) -> AuthResponse:
+def verify_otp(request: VerifyOTPRequest, user_dao: CustomerDAO) -> AuthResponse:
     response = user_dao.client.auth.verify_otp(
         {"email": request.email, "token": request.otp, "type": "recovery"}
     )
-    user = User.validate_supabase_user(response.user)
+    customer = customer.validate_supabase_user(response.customer)
     session = Session.validate_supabase_session(response.session)
-    return AuthResponse(user=user, session=session)
+    return AuthResponse(customer=customer, session=session)

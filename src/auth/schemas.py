@@ -3,8 +3,8 @@ from typing import Union
 from pydantic import BaseModel as PydanticBaseModel
 from pydantic import EmailStr, Field, field_validator
 
-from src.common.utils.types import PasswordStr
-from src.common.utils.validators import validate_name
+from src.utils.types import PasswordStr
+from src.utils.validators.name_validator import validate_name
 
 
 class RegisterRequest(PydanticBaseModel):
