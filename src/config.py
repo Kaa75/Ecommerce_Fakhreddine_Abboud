@@ -7,8 +7,8 @@ load_dotenv()
 
 class Config:
     class APP:
-        TITLE = "GPA Calculator"
-        DESCRIPTION = "A simple GPA calculator API"
+        TITLE = "Ecommerce Abboud Fakhreddine 435L"
+        DESCRIPTION = "Welcome to the Ecommerce Karim Abboud Rayan Fakhreddine 435L API"
         VERSION = "0.1.0"
 
     class SUPABASE:

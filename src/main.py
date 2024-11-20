@@ -29,7 +29,7 @@ async def root() -> HTMLResponse:
     html_content = """
     <html>
         <head>
-            <title>GPA Calculator API</title>
+            <title>Ecommerce Abboud Fakhreddine 435L</title>
             <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -47,7 +47,7 @@ async def root() -> HTMLResponse:
             </style>
         </head>
         <body>
-            <h1>Welcome to the GPA calculator API</h1>
+            <h1>Welcome to the Ecommerce Karim Abboud Rayan Fakhreddine 435L API</h1>
             <p>To access the docs, visit <a href="/docs">docs</a> or <a href="/redoc">redoc</a></p>
         </body>
     </html>
