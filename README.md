@@ -4,7 +4,7 @@ A simple GPA calculator that allows students to calculate their GPA based on the
 
 ## Setup the environment
 
-1. Install Python 3.12 or higher
+1. Install Python 3.12.6 or higher
 2. Create a virtual environment
 
 ```bash

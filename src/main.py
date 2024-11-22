@@ -7,6 +7,7 @@ from fastapi.responses import HTMLResponse
 
 from src.auth.router import auth_router
 from src.config import Config
+from src.controllers import customers_router, status_router
 
 # Add the project root to sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -26,6 +27,8 @@ app.add_middleware(
 )
 
 app.include_router(auth_router)
+app.include_router(status_router)
+app.include_router(customers_router)
 
 
 @app.get("/", response_class=HTMLResponse)
