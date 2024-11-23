@@ -12,7 +12,7 @@ from src.utils.responses import AuthResponse
 def register(request: RegisterRequest, customer_dao: CustomerDAO) -> AuthResponse:
     try:
         result = customer_dao.client.auth.sign_up(request.auth_model_dump())
-        customer = Customer.validate_supabase_user(result.customer)
+        customer = Customer.validate_supabase_user(result.user)
         return AuthResponse(customer=customer)
     except AuthApiError as e:
         if "Email rate limit exceeded" in str(e):
@@ -36,7 +36,7 @@ def login(request: LoginRequest, customer_dao: CustomerDAO) -> AuthResponse:
         result: GoTrueAuthResponse = customer_dao.client.auth.sign_in_with_password(
             request.auth_model_dump()
         )
-        customer = Customer.validate_supabase_user(result.customer)
+        customer = Customer.validate_supabase_user(result.user)
         session = Session.validate_supabase_session(result.session)
         return AuthResponse(
             customer=customer,

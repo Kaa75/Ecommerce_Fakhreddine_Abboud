@@ -1,21 +1,25 @@
 from typing import Union
 
 from pydantic import BaseModel as PydanticBaseModel
-from pydantic import EmailStr, Field, field_validator
+from pydantic import EmailStr, Field, PositiveInt, field_validator
 
 from src.utils.types import PasswordStr
 from src.utils.validators.name_validator import validate_name
 
 
 class RegisterRequest(PydanticBaseModel):
-    first_name: str = Field(description="First Name")
-    last_name: str = Field(description="Last Name")
+    full_name: str = Field(description="Full Name")
+    username: str = Field(description="Username")
+    age: PositiveInt = Field(description="Age must be a positive integer")
+    gender: str = Field(description="Sex")
+    address: str = Field(description="Address")
+    marital_status: str = Field(description="Marital Status")
     email: EmailStr = Field(description="Email must be valid email")
     password: PasswordStr = Field(
         description="Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, and one number.",
     )
 
-    @field_validator("first_name", "last_name")
+    @field_validator("full_name")
     def name_validator(cls, v: str) -> str:
         return validate_name(v)
 
@@ -27,8 +31,12 @@ class RegisterRequest(PydanticBaseModel):
             "password": self.password,
             "options": {
                 "data": {
-                    "first_name": self.first_name,
-                    "last_name": self.last_name,
+                    "full_name": self.full_name,
+                    "username": self.username,
+                    "age": str(self.age),
+                    "gender": self.gender,
+                    "address": self.address,
+                    "marital_status": self.marital_status,
                 }
             },
         }

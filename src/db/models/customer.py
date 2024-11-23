@@ -23,7 +23,7 @@ class Customer(BaseModel):
         return cls(
             id=customer.id,
             email=customer.email,
-            fullname=customer.user_metadata["first last"],
+            fullname=customer.user_metadata["full_name"],
             username=customer.user_metadata["username"],
             age=customer.user_metadata["age"],
             gender=customer.user_metadata["gender"],
