@@ -3,4 +3,3 @@ class SupabaseTables:
     INVENTORY = "Inventory"
     HISTORY = "History"
     REVIEWS = "Reviews"
-    Products = "Products"
