@@ -30,7 +30,7 @@ class RegisterRequest(PydanticBaseModel):
 
     def auth_model_dump(
         self,
-    ) -> dict[str, Union[str, dict[str, dict[str, str]]]]:
+    ) -> dict[str, Union[str, dict[str, dict[str, Union[str, int]]]]]:
         return {
             "email": self.email,
             "password": self.password,
@@ -38,7 +38,7 @@ class RegisterRequest(PydanticBaseModel):
                 "data": {
                     "full_name": self.full_name,
                     "username": self.username,
-                    "age": str(self.age),
+                    "age": self.age,
                     "gender": self.gender,
                     "address": self.address,
                     "marital_status": self.marital_status,
