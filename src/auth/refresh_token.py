@@ -1,3 +1,8 @@
+"""
+Provides functionality to refresh authentication tokens, ensuring continuous user sessions
+by issuing new tokens upon request.
+"""
+
 from src.db.dao.customer_dao import CustomerDAO
 from src.db.models import Customer
 from src.session import Session

@@ -1,3 +1,5 @@
+"""Module defining the APIResponse class for standardized API responses."""
+
 from typing import Any, TypeVar
 
 from fastapi import status
@@ -9,6 +11,8 @@ BaseModelType = TypeVar("BaseModelType", bound=BaseModel)
 
 
 class APIResponse(FastAPIJSONResponse):
+    """A custom JSON response class for API endpoints."""
+
     media_type = "application/json"
 
     def __init__(
@@ -17,6 +21,7 @@ class APIResponse(FastAPIJSONResponse):
         status_code: int = status.HTTP_200_OK,
         data: dict[str, Any] = {},
     ) -> None:
+        """Initialize the APIResponse with a message, status code, and optional data."""
         if not message:
             raise ValueError("message must be provided")
         if not status_code:

@@ -1,3 +1,7 @@
+"""
+This module defines the router for handling review-related operations.
+"""
+
 from src.controllers.routers import BaseRouter
 from src.db.dependencies import get_review_dao
 from src.db.models import Reviews

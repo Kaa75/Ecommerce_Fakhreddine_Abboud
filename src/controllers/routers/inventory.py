@@ -1,3 +1,7 @@
+"""
+This module defines the router for handling inventory-related operations.
+"""
+
 from src.controllers.routers import BaseRouter
 from src.db.dependencies import get_inventory_dao
 from src.db.models import Inventory

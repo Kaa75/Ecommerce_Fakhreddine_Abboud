@@ -6,5 +6,9 @@ from src.db.tables import SupabaseTables
 
 
 class HistoryDAO(BaseDAO[History]):
+    """
+    Data Access Object for managing user history records in the database.
+    """
+
     def __init__(self, client: Client) -> None:
         super().__init__(client, SupabaseTables.HISTORY, History)

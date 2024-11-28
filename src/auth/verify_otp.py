@@ -1,3 +1,8 @@
+"""
+Manages the verification of OTPs (One-Time Passwords) provided by users for authentication
+and account recovery purposes.
+"""
+
 from src.auth.schemas import VerifyOTPRequest
 from src.db.dao import CustomerDAO
 from src.db.models import Customer
