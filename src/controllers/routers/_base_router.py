@@ -1,3 +1,7 @@
+"""
+This module defines the BaseRouter class, which provides generic CRUD operations for different models.
+"""
+
 from enum import Enum
 from typing import (
     Any,
@@ -25,6 +29,16 @@ BaseModelType = TypeVar("BaseModelType", bound=BaseModel)
 
 
 class BaseRouter(Generic[BaseModelType]):
+    """
+    A generic router providing CRUD operations for a specified model.
+
+    Args:
+        prefix (str): The URL prefix for the router.
+        tags (Optional[list[Union[str, Enum]]]): Tags for API documentation.
+        name (str): The name of the model.
+        model (Type[BaseModelType]): The Pydantic model class.
+        get_dao (Callable[[], BaseDAO[BaseModelType]]): Function to get the data access object.
+    """
     def __init__(
         self,
         prefix: str,
@@ -52,6 +66,16 @@ class BaseRouter(Generic[BaseModelType]):
     async def get_by_query(
         self, query: PydanticBaseModel, dao: BaseDAO[BaseModelType]
     ) -> APIResponse:
+        """
+        Retrieves items based on query parameters.
+
+        Args:
+            query (PydanticBaseModel): The query parameters.
+            dao (BaseDAO[BaseModelType]): The data access object.
+
+        Returns:
+            APIResponse: The response containing the retrieved items or an error message.
+        """
         try:
             items = dao.get_by_query(**query.model_dump())
             if items:
@@ -75,6 +99,16 @@ class BaseRouter(Generic[BaseModelType]):
         request: dict[str, Any],
         dao: BaseDAO[BaseModelType],
     ) -> APIResponse:
+        """
+        Creates a new item.
+
+        Args:
+            request (dict[str, Any]): The data for the new item.
+            dao (BaseDAO[BaseModelType]): The data access object.
+
+        Returns:
+            APIResponse: The response indicating success or failure.
+        """
         try:
             item = dao.create(request)
             if item:
@@ -98,6 +132,16 @@ class BaseRouter(Generic[BaseModelType]):
         request: list[dict[str, Any]],
         dao: BaseDAO[BaseModelType],
     ) -> APIResponse:
+        """
+        Creates multiple new items.
+
+        Args:
+            request (list[dict[str, Any]]): The data for the new items.
+            dao (BaseDAO[BaseModelType]): The data access object.
+
+        Returns:
+            APIResponse: The response indicating success or failure.
+        """
         try:
             items = dao.create_many(request)
             if items:
@@ -117,6 +161,16 @@ class BaseRouter(Generic[BaseModelType]):
             )
 
     async def get_by_id(self, id: UuidStr, dao: BaseDAO[BaseModelType]) -> APIResponse:
+        """
+        Retrieves an item by its ID.
+
+        Args:
+            id (UuidStr): The UUID of the item.
+            dao (BaseDAO[BaseModelType]): The data access object.
+
+        Returns:
+            APIResponse: The response containing the retrieved item or an error message.
+        """
         try:
             item = dao.get_by_id(id)
             if item:
@@ -141,6 +195,17 @@ class BaseRouter(Generic[BaseModelType]):
         request: dict[str, Any],
         dao: BaseDAO[BaseModelType],
     ) -> APIResponse:
+        """
+        Updates an existing item.
+
+        Args:
+            id (UuidStr): The UUID of the item.
+            request (dict[str, Any]): The updated data for the item.
+            dao (BaseDAO[BaseModelType]): The data access object.
+
+        Returns:
+            APIResponse: The response indicating success or failure.
+        """
         try:
             item = dao.update(id, request)
             if item:
@@ -160,6 +225,16 @@ class BaseRouter(Generic[BaseModelType]):
             )
 
     async def delete(self, id: UuidStr, dao: BaseDAO[BaseModelType]) -> APIResponse:
+        """
+        Deletes an item by its ID.
+
+        Args:
+            id (UuidStr): The UUID of the item.
+            dao (BaseDAO[BaseModelType]): The data access object.
+
+        Returns:
+            APIResponse: The response indicating success or failure.
+        """
         try:
             item = dao.delete(id)
             if item:
@@ -179,6 +254,12 @@ class BaseRouter(Generic[BaseModelType]):
             )
 
     def build_router(self) -> APIRouter:
+        """
+        Builds and returns the APIRouter with all the CRUD endpoints.
+
+        Returns:
+            APIRouter: The configured router.
+        """
         @self.router.get("/")
         async def get_by_query(
             query: PydanticBaseModel = Depends(self.query),

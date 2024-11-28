@@ -1,3 +1,8 @@
+"""
+This module defines the Pydantic models for authentication requests, including registration,
+login, password reset, and OTP verification.
+"""
+
 from typing import Union
 
 from pydantic import BaseModel as PydanticBaseModel
