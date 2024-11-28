@@ -1,4 +1,4 @@
-from src.controllers.routers._base_router import BaseRouter
+from src.controllers.routers import BaseRouter
 from src.db.dependencies import get_customer_dao
 from src.db.models import Customer
 
