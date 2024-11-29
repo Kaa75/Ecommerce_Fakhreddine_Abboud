@@ -1,7 +1,7 @@
-Review Dao
-==========
+Session
+=======
 
-.. automodule:: review_dao
+.. automodule:: session
    :members:
    :undoc-members:
    :show-inheritance:

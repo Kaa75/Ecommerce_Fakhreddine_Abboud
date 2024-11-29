@@ -1,7 +1,7 @@
-Review Dao
-==========
+Request Otp
+===========
 
-.. automodule:: review_dao
+.. automodule:: request_otp
    :members:
    :undoc-members:
    :show-inheritance:

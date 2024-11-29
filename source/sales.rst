@@ -1,7 +1,7 @@
-Review Dao
-==========
+Sales
+=====
 
-.. automodule:: review_dao
+.. automodule:: sales
    :members:
    :undoc-members:
    :show-inheritance:

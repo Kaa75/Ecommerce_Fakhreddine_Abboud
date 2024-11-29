@@ -1,7 +1,7 @@
-Review Dao
-==========
+Schemas
+=======
 
-.. automodule:: review_dao
+.. automodule:: schemas
    :members:
    :undoc-members:
    :show-inheritance:

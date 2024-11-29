@@ -1,7 +1,7 @@
-Customer Dao
+Dependencies
 ============
 
-.. automodule:: customer_dao
+.. automodule:: dependencies
    :members:
    :undoc-members:
    :show-inheritance:

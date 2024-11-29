@@ -1,7 +1,7 @@
-Review Dao
-==========
+Passwordstr
+===========
 
-.. automodule:: review_dao
+.. automodule:: PasswordStr
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,7 +1,7 @@
-Review Dao
-==========
+Inventory
+=========
 
-.. automodule:: review_dao
+.. automodule:: inventory
    :members:
    :undoc-members:
    :show-inheritance:
