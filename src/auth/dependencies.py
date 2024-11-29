@@ -20,6 +20,7 @@ def decode_jwt(token: str) -> dict[str, str]:
     except PyJWTError as e:
         raise InvalidTokenError(str(e))
 
+
 async def get_access_token(
     bearer: HTTPAuthorizationCredentials = Depends(HTTPBearer(scheme_name="Bearer")),
 ) -> str:
