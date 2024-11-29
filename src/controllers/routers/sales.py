@@ -1,12 +1,14 @@
-from typing import Any, Dict, Generic, List
+from typing import Any, Dict, Generic, List, TypeVar
 
 from fastapi import APIRouter, Depends, status
 
 from src.db.dao import BaseDAO
 from src.db.dependencies import get_customer_dao, get_history_dao, get_inventory_dao
-from src.db.models import Customer, History, Inventory
+from src.db.models import Customer, History, Inventory, BaseModel
 from src.utils.responses import APIResponse
 from src.utils.types import UuidStr
+
+ModelType = TypeVar("ModelType", bound=BaseModel)
 
 sales_router = APIRouter(
     prefix="/sales",
@@ -179,7 +181,7 @@ async def get_product_history(
         )
 
 
-def merge_dicts(dict_list: List[Generic]) -> Dict[str, Any]:  # type: ignore
+def merge_dicts(dict_list: List[ModelType]) -> Dict[str, Any]:  # type: ignore
     result: Dict[str, Any] = {}
     for dictionary in dict_list:
         result.update(dictionary)
