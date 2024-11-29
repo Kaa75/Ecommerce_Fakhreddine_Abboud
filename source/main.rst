@@ -1,7 +1,7 @@
-Review Dao
-==========
+Main
+====
 
-.. automodule:: review_dao
+.. automodule:: main
    :members:
    :undoc-members:
    :show-inheritance:

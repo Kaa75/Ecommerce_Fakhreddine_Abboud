@@ -1,7 +1,7 @@
-Review Dao
-==========
+Categorystr
+===========
 
-.. automodule:: review_dao
+.. automodule:: CategoryStr
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,0 +1,5 @@
+Uuidstr
+=======
+
+.. automodule:: UuidStr
+   :members:

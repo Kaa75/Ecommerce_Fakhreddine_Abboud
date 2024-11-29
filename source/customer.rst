@@ -1,7 +1,7 @@
-Review Dao
-==========
+Customer
+========
 
-.. automodule:: review_dao
+.. automodule:: customer
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,7 +1,7 @@
-Customer Dao
+Api Response
 ============
 
-.. automodule:: customer_dao
+.. automodule:: API_response
    :members:
    :undoc-members:
    :show-inheritance:

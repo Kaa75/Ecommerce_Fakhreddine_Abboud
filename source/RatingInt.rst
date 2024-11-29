@@ -1,7 +1,7 @@
-Review Dao
-==========
+Ratingint
+=========
 
-.. automodule:: review_dao
+.. automodule:: RatingInt
    :members:
    :undoc-members:
    :show-inheritance:

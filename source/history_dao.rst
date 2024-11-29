@@ -1,7 +1,7 @@
-Review Dao
-==========
+History Dao
+===========
 
-.. automodule:: review_dao
+.. automodule:: history_dao
    :members:
    :undoc-members:
    :show-inheritance:
