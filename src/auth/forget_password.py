@@ -1,3 +1,8 @@
+"""
+Handles the process when a user forgets their password, including validating the user
+and sending reset instructions via email.
+"""
+
 from fastapi import HTTPException, status
 
 from src.auth.schemas import ForgetPasswordRequest

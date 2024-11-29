@@ -1,3 +1,7 @@
+"""
+Handles the logic for resetting a customer's password, including updating the password
+in the database and validating the operation.
+"""
 from src.auth.schemas import ResetPasswordRequest
 from src.db.dao import CustomerDAO
 from src.db.models import Customer

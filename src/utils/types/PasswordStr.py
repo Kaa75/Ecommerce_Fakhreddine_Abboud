@@ -1,9 +1,23 @@
+"""Module for password string validation utilities."""
+
 from typing import Annotated, Optional
 
 from pydantic.functional_validators import BeforeValidator
 
 
 def validate_password_str(v: Optional[str] = None) -> Optional[str]:
+    """
+    Validate the password string.
+
+    Args:
+        v (Optional[str]): The password to validate.
+
+    Returns:
+        Optional[str]: The validated password if valid, otherwise None.
+
+    Raises:
+        ValueError: If the password does not meet the criteria.
+    """
     if not v:
         return None
     try:
@@ -22,3 +36,4 @@ def validate_password_str(v: Optional[str] = None) -> Optional[str]:
 
 
 PasswordStr = Annotated[str, BeforeValidator(validate_password_str)]
+"""Type annotation for validated password strings."""

@@ -1,3 +1,5 @@
+"""Controller for handling status check endpoints."""
+
 from fastapi import APIRouter, status
 
 from src.utils.responses import APIResponse
@@ -18,6 +20,7 @@ status_router = APIRouter(
     },
 )
 async def status_check() -> APIResponse:
+    """Endpoint to perform a status check."""
     return APIResponse(
         message="Status check successful",
         status_code=status.HTTP_200_OK,

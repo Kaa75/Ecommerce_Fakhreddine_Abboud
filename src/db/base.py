@@ -9,6 +9,9 @@ def get_authenticated_client(
     access_token: str = Depends(get_access_token),
     refresh_token: str = Depends(get_refresh_token),
 ) -> Client:
+    """
+    Creates and returns an authenticated Supabase client using access and refresh tokens.
+    """
     if Config.SUPABASE.KEY is None or Config.SUPABASE.URL is None:
         raise ValueError("SUPABASE_KEY and SUPABASE_URL must be set in the environment")
     client = create_client(
@@ -20,6 +23,9 @@ def get_authenticated_client(
 
 
 def get_unauthenticated_client() -> Client:
+    """
+    Creates and returns an unauthenticated Supabase client.
+    """
     if Config.SUPABASE.KEY is None or Config.SUPABASE.URL is None:
         raise ValueError("SUPABASE_KEY and SUPABASE_URL must be set in the environment")
     return create_client(

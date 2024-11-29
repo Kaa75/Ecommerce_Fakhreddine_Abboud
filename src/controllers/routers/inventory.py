@@ -1,3 +1,7 @@
+"""
+This module defines the router for handling inventory-related operations.
+"""
+
 from fastapi import Depends, status
 from pydantic import PositiveInt
 

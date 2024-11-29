@@ -1,3 +1,7 @@
+"""
+Defines the FastAPI router for authentication endpoints, including registration, login,
+password reset, token refresh, and OTP handling.
+"""
 from fastapi import APIRouter, Depends, status
 
 from src.auth.auth import login, register
