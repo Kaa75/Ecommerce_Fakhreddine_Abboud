@@ -29,3 +29,4 @@ class Reviews(BaseModel):
     review: str
     created_at: datetime
     updated_at: datetime
+    status: str

@@ -5,7 +5,7 @@ This module defines the Customer model for managing customer information.
 from typing import Optional
 
 from gotrue.types import User as GoTrueUser  # type: ignore
-from pydantic import EmailStr, PositiveInt, NonNegativeFloat
+from pydantic import EmailStr, NonNegativeFloat, PositiveInt
 
 from src.db.models import BaseModel
 from src.utils.types.UuidStr import UuidStr
