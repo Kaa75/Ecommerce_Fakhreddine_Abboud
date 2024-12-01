@@ -4,7 +4,7 @@ This module defines the Inventory model for managing product stocks.
 
 from typing import Optional
 
-from pydantic import PositiveFloat, PositiveInt
+from pydantic import NonNegativeInt, PositiveFloat
 
 from src.db.models import BaseModel
 from src.utils.types import CategoryStr, UuidStr
@@ -22,9 +22,10 @@ class Inventory(BaseModel):
         quantity: Available quantity in stock.
         description: Description of the product.
     """
+
     id: Optional[UuidStr] = None
     product_name: str
     category: CategoryStr
     price: PositiveFloat
-    quantity: PositiveInt
+    quantity: NonNegativeInt
     description: str

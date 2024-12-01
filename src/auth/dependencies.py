@@ -2,6 +2,7 @@
 Defines dependencies for authentication, including JWT decoding and token extraction
 mechanisms for secured endpoints.
 """
+
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from fastapi.security.api_key import APIKeyHeader

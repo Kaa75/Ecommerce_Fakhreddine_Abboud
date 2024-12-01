@@ -23,9 +23,9 @@ class History(BaseModel):
         total: Total amount of the purchase.
         purchase_date: Date and time of the purchase.
     """
+
     id: Optional[UuidStr] = None
     customer_id: UuidStr
     product_id: UuidStr
     quantity: PositiveInt
     total: PositiveFloat
-    purchase_date: datetime

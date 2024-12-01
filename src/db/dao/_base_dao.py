@@ -11,7 +11,7 @@ BaseModelType = TypeVar("BaseModelType", bound=BaseModel)
 class BaseDAO(Generic[BaseModelType]):
     """
     Generic Data Access Object providing basic CRUD operations.
-    
+
     Args:
         client (Client): Supabase client instance.
         table (str): Name of the table.
@@ -31,10 +31,10 @@ class BaseDAO(Generic[BaseModelType]):
     ) -> list[BaseModelType]:
         """
         Retrieve records matching the query parameters.
-        
+
         Args:
             **kwargs: Arbitrary keyword arguments representing query filters.
-        
+
         Returns:
             List of validated model instances.
         """
@@ -50,10 +50,10 @@ class BaseDAO(Generic[BaseModelType]):
     def create(self, model_data: dict[str, Any]) -> Optional[BaseModelType]:
         """
         Create a new record in the table.
-        
+
         Args:
             model_data (dict): Data for the new record.
-        
+
         Returns:
             The created model instance or None if creation failed.
         """
@@ -66,10 +66,10 @@ class BaseDAO(Generic[BaseModelType]):
     def create_many(self, model_data: list[dict[str, Any]]) -> list[BaseModelType]:
         """
         Create multiple records in the table.
-        
+
         Args:
             model_data (list of dict): List of data for the new records.
-        
+
         Returns:
             List of created model instances.
         """
@@ -83,10 +83,10 @@ class BaseDAO(Generic[BaseModelType]):
     def get_by_id(self, id: UuidStr) -> Optional[BaseModelType]:
         """
         Retrieve a record by its unique identifier.
-        
+
         Args:
             id (UuidStr): The unique identifier of the record.
-        
+
         Returns:
             The model instance if found, else None.
         """
@@ -100,11 +100,11 @@ class BaseDAO(Generic[BaseModelType]):
     ) -> Optional[BaseModelType]:
         """
         Update a record by its unique identifier.
-        
+
         Args:
             id (UuidStr): The unique identifier of the record.
             model_data (dict): Data to update the record with.
-        
+
         Returns:
             The updated model instance if successful, else None.
         """
@@ -117,10 +117,10 @@ class BaseDAO(Generic[BaseModelType]):
     def delete(self, id: UuidStr) -> Optional[BaseModelType]:
         """
         Delete a record by its unique identifier.
-        
+
         Args:
             id (UuidStr): The unique identifier of the record.
-        
+
         Returns:
             The deleted model instance if successful, else None.
         """

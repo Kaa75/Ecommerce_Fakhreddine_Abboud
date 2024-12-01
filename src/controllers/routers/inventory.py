@@ -85,7 +85,7 @@ inventory_router = BaseRouter[Inventory](
 #     "amount": 5
 # }
 
-@inventory_router.put("/{id}")
+@inventory_router.put("/deduct/{id}")
 async def deduct_goods(
     id: UuidStr,
     amount: PositiveInt,

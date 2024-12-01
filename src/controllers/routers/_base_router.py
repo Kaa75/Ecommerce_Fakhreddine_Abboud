@@ -39,6 +39,7 @@ class BaseRouter(Generic[BaseModelType]):
         model (Type[BaseModelType]): The Pydantic model class.
         get_dao (Callable[[], BaseDAO[BaseModelType]]): Function to get the data access object.
     """
+
     def __init__(
         self,
         prefix: str,
@@ -260,6 +261,7 @@ class BaseRouter(Generic[BaseModelType]):
         Returns:
             APIRouter: The configured router.
         """
+
         @self.router.get("/")
         async def get_by_query(
             query: PydanticBaseModel = Depends(self.query),

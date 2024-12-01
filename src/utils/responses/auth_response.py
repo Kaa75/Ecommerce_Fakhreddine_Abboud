@@ -14,5 +14,6 @@ class AuthResponse(PydanticBaseModel):
     """
     Represents an authentication response containing customer and session information.
     """
+
     customer: Optional[Customer] = None
     session: Optional[Session] = None

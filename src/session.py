@@ -13,6 +13,7 @@ class Session(PydanticBaseModel):
         refresh_token (str): The refresh token for the session.
         expires_in (NonNegativeInt): The duration in seconds until the session expires.
     """
+
     access_token: str
     refresh_token: str
     expires_in: NonNegativeInt
