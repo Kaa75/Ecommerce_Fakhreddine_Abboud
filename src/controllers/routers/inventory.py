@@ -20,6 +20,70 @@ inventory_router = BaseRouter[Inventory](
     get_dao=get_inventory_dao,
 ).build_router()
 
+# API Calls:
+
+# GET /inventory/
+# Description: Retrieve all inventory items.
+# Method: GET
+# URL: http://localhost:8000/inventory/
+
+# POST /inventory/
+# Description: Add a new inventory item.
+# Method: POST
+# URL: http://localhost:8000/inventory/
+# Body:
+# {
+#     "product_name": "New Product",
+#     "price": 99.99,
+#     "quantity": 50
+# }
+
+# POST /inventory/many
+# Description: Add multiple inventory items.
+# Method: POST
+# URL: http://localhost:8000/inventory/many
+# Body:
+# [
+#     {
+#         "product_name": "Product 1",
+#         "price": 49.99,
+#         "quantity": 30
+#     },
+#     {
+#         "product_name": "Product 2",
+#         "price": 149.99,
+#         "quantity": 20
+#     }
+# ]
+
+# GET /inventory/{id}
+# Description: Retrieve an inventory item by ID.
+# Method: GET
+# URL: http://localhost:8000/inventory/{id}
+
+# PUT /inventory/{id}
+# Description: Update an inventory item by ID.
+# Method: PUT
+# URL: http://localhost:8000/inventory/{id}
+# Body:
+# {
+#     "price": 89.99,
+#     "quantity": 40
+# }
+
+# DELETE /inventory/{id}
+# Description: Delete an inventory item by ID.
+# Method: DELETE
+# URL: http://localhost:8000/inventory/{id}
+
+# PUT /inventory/{id}
+# Description: Deduct a specified amount of goods from the inventory.
+# Method: PUT
+# URL: http://localhost:8000/inventory/{id}
+# Body:
+# {
+#     "amount": 5
+# }
 
 @inventory_router.put("/{id}")
 async def deduct_goods(

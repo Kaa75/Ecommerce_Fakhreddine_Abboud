@@ -104,3 +104,77 @@ async def add_money_to_wallet(
         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
         message="Failed to update wallet",
     )
+
+# API Calls:
+
+# GET /customers/
+# Description: Retrieve all customers.
+# Method: GET
+# URL: http://localhost:8000/customers/
+
+# POST /customers/
+# Description: Create a new customer.
+# Method: POST
+# URL: http://localhost:8000/customers/
+# Body:
+# {
+#     "name": "John Doe",
+#     "email": "john.doe@example.com",
+#     "wallet": 100.00
+# }
+
+# POST /customers/many
+# Description: Create multiple new customers.
+# Method: POST
+# URL: http://localhost:8000/customers/many
+# Body:
+# [
+#     {
+#         "name": "Jane Smith",
+#         "email": "jane.smith@example.com",
+#         "wallet": 150.00
+#     },
+#     {
+#         "name": "Alice Johnson",
+#         "email": "alice.johnson@example.com",
+#         "wallet": 200.00
+#     }
+# ]
+
+# GET /customers/{id}
+# Description: Retrieve a customer by ID.
+# Method: GET
+# URL: http://localhost:8000/customers/{id}
+
+# PUT /customers/{id}
+# Description: Update a customer by ID.
+# Method: PUT
+# URL: http://localhost:8000/customers/{id}
+# Body:
+# {
+#     "email": "new.email@example.com",
+#     "wallet": 120.00
+# }
+
+# DELETE /customers/{id}
+# Description: Delete a customer by ID.
+# Method: DELETE
+# URL: http://localhost:8000/customers/{id}"
+
+# PUT /customers/deduct_money/{id}
+# Description: Deduct a specified amount of money from the customer's wallet.
+# Method: PUT
+# URL: http://localhost:8000/customers/{id}
+# Body:
+# {
+#     "amount": 20.00
+# }
+
+# PUT /customers/add_money/{id}
+# Description: Add a specified amount of money to the customer's wallet.
+# Method: PUT
+# URL: http://localhost:8000/customers/add_money/{id}
+# Body:
+# {
+#     "money": 50.00
+# }

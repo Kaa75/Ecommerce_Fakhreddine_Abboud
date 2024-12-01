@@ -15,6 +15,40 @@ sales_router = APIRouter(
     tags=["Sales"],
 )
 
+# API Calls:
+
+# GET /sales/goods
+# Description: Retrieve all available goods.
+# Method: GET
+# URL: http://localhost:8000/sales/goods
+
+# GET /sales/good
+# Description: Retrieve a specific good by name.
+# Method: GET
+# URL: http://localhost:8000/sales/good
+# Query Parameters:
+#   - name: string
+
+# POST /sales/purchase
+# Description: Process the purchase of a specific good by a customer.
+# Method: POST
+# URL: http://localhost:8000/sales/purchase
+# Body:
+# {
+#     "name": "product_name",
+#     "quantity": 2,
+#     "customer_id": "uuid-string"
+# }
+
+# GET /sales/customer={id}/history
+# Description: Retrieve the purchase history for a specific customer.
+# Method: GET
+# URL: http://localhost:8000/sales/customer={id}/history
+
+# GET /sales/product={id}/history
+# Description: Retrieve the purchase history for a specific product.
+# Method: GET
+# URL: http://localhost:8000/sales/product={id}/history
 
 @sales_router.get("/goods")
 async def get_goods(

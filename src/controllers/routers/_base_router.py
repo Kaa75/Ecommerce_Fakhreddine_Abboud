@@ -304,3 +304,53 @@ class BaseRouter(Generic[BaseModelType]):
             return await self.delete(id, dao)
 
         return self.router
+
+
+# API Calls for Generic CRUD Operations:
+
+# GET /{prefix}/
+# Description: Retrieve all items.
+# Method: GET
+# URL: http://localhost:8000/{prefix}/
+
+# POST /{prefix}/
+# Description: Create a new item.
+# Method: POST
+# URL: http://localhost:8000/{prefix}/
+# Body:
+# {
+#     // ...fields specific to the model...
+# }
+
+# POST /{prefix}/many
+# Description: Create multiple new items.
+# Method: POST
+# URL: http://localhost:8000/{prefix}/many
+# Body:
+# [
+#     {
+#         // ...fields for first item...
+#     },
+#     {
+#         // ...fields for second item...
+#     }
+# ]
+
+# GET /{prefix}/{id}
+# Description: Retrieve an item by ID.
+# Method: GET
+# URL: http://localhost:8000/{prefix}/{id}
+
+# PUT /{prefix}/{id}
+# Description: Update an item by ID.
+# Method: PUT
+# URL: http://localhost:8000/{prefix}/{id}
+# Body:
+# {
+#     // ...fields to update...
+# }
+
+# DELETE /{prefix}/{id}
+# Description: Delete an item by ID.
+# Method: DELETE
+# URL: http://localhost:8000/{prefix}/{id}
