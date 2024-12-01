@@ -1,6 +1,6 @@
 # Ecommerce API Backend
 
-A simple GPA calculator that allows students to calculate their GPA based on their grades and credit hours.
+A Ecommerce API Backend for EECE 435L.
 
 ## Setup the environment
 
