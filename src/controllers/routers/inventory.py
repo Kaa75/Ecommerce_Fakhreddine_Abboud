@@ -27,6 +27,17 @@ async def deduct_goods(
     amount: PositiveInt,
     inventory_dao: BaseDAO[Inventory] = Depends(get_inventory_dao),
 ) -> APIResponse:
+    """
+    Deducts a specified amount of goods from the inventory.
+
+    Args:
+        id (UuidStr): The unique identifier of the inventory item.
+        amount (PositiveInt): The amount of goods to deduct.
+        inventory_dao (BaseDAO[Inventory], optional): The DAO for Inventory. Defaults to Depends(get_inventory_dao).
+
+    Returns:
+        APIResponse: The response containing the result of the deduction operation.
+    """
     try:
         product = inventory_dao.get_by_id(id)
         if not product:

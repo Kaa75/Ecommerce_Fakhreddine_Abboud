@@ -20,6 +20,7 @@ sales_router = APIRouter(
 async def get_goods(
     dao: BaseDAO[Inventory] = Depends(get_inventory_dao),
 ) -> APIResponse:
+    """Retrieve all available goods."""
     try:
         all_goods = dao.get_by_query()
         if not all_goods:
@@ -47,6 +48,7 @@ async def get_goods(
 async def get_good(
     name: str, dao: BaseDAO[Inventory] = Depends(get_inventory_dao)
 ) -> APIResponse:
+    """Retrieve a specific good by name."""
     try:
         good = dao.get_by_query(product_name=name)
         if not good:
@@ -75,6 +77,7 @@ async def purchase_good(
     history_dao: BaseDAO[History] = Depends(get_history_dao),
     customer_dao: BaseDAO[Customer] = Depends(get_customer_dao),
 ) -> APIResponse:
+    """Process the purchase of a specific good by a customer."""
     try:
         good = inventory_dao.get_by_query(product_name=name)[0]
         if not good:
@@ -139,6 +142,7 @@ async def purchase_good(
 async def get_customer_history(
     id: UuidStr, dao: BaseDAO[History] = Depends(get_history_dao)
 ) -> APIResponse:
+    """Retrieve the purchase history for a specific customer."""
     try:
         history = dao.get_by_query(customer_id=id)
         if not history:
@@ -162,6 +166,7 @@ async def get_customer_history(
 async def get_product_history(
     id: UuidStr, dao: BaseDAO[History] = Depends(get_history_dao)
 ) -> APIResponse:
+    """Retrieve the purchase history for a specific product."""
     try:
         history = dao.get_by_query(product_id=id)
         if not history:

@@ -27,6 +27,17 @@ async def deduct_money(
     amount: PositiveFloat,
     customer_dao: BaseDAO[Customer] = Depends(get_customer_dao),
 ) -> APIResponse:
+    """
+    Deducts a specified amount of money from the customer's wallet.
+
+    Args:
+        id (UuidStr): The UUID of the customer.
+        amount (PositiveFloat): The amount to deduct.
+        customer_dao (BaseDAO[Customer]): The data access object for customers.
+
+    Returns:
+        APIResponse: The response indicating success or failure.
+    """
     try:
         customer = customer_dao.get_by_id(id)
         if not customer:

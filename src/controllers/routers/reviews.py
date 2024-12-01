@@ -13,3 +13,4 @@ review_router = BaseRouter[Reviews](
     model=Reviews,
     get_dao=get_review_dao,
 ).build_router()
+"""Router instance for managing review endpoints."""
