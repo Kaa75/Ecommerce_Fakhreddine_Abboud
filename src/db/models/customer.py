@@ -26,6 +26,7 @@ class Customer(BaseModel):
         marital_status: Marital status of the customer.
         wallet: Balance in the customer's wallet.
     """
+
     id: Optional[UuidStr] = None
     fullname: str
     email: EmailStr
@@ -50,7 +51,7 @@ class Customer(BaseModel):
         return cls(
             id=customer.id,
             email=customer.email,
-            fullname=customer.user_metadata["full_name"],
+            fullname=customer.user_metadata["fullname"],
             username=customer.user_metadata["username"],
             age=customer.user_metadata["age"],
             gender=customer.user_metadata["gender"],

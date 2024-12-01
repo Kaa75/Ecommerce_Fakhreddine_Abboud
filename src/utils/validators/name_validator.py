@@ -1,5 +1,6 @@
 """Module for validating user names."""
 
+
 def validate_name(v: str) -> str:
     """
     Validate a user's full name.

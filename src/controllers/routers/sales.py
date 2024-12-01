@@ -1,12 +1,13 @@
-from typing import Any, Dict, Generic, List, TypeVar
+from typing import Any, Dict, List, TypeVar
 
 from fastapi import APIRouter, Depends, status
 
 from src.db.dao import BaseDAO
 from src.db.dependencies import get_customer_dao, get_history_dao, get_inventory_dao
-from src.db.models import Customer, History, Inventory, BaseModel
+from src.db.models import BaseModel, Customer, History, Inventory
 from src.utils.responses import APIResponse
 from src.utils.types import UuidStr
+from src.controllers.schemas.purchase_request_schema import PurchaseRequest
 
 ModelType = TypeVar("ModelType", bound=BaseModel)
 
@@ -66,17 +67,18 @@ async def get_good(
         )
 
 
-@sales_router.post("/purchase")
+@sales_router.post("/purchase/{id}")
 async def purchase_good(
-    name: str,
-    quantity: int,
-    customer_id: UuidStr,
+    request: PurchaseRequest,
     inventory_dao: BaseDAO[Inventory] = Depends(get_inventory_dao),
     history_dao: BaseDAO[History] = Depends(get_history_dao),
     customer_dao: BaseDAO[Customer] = Depends(get_customer_dao),
 ) -> APIResponse:
     try:
-        good = inventory_dao.get_by_query(product_name=name)[0]
+        product_id = request.product_id
+        customer_id = request.customer_id
+        quantity = request.quantity
+        good = inventory_dao.get_by_id(id=product_id)
         if not good:
             return APIResponse(
                 status_code=status.HTTP_404_NOT_FOUND,
@@ -88,6 +90,7 @@ async def purchase_good(
                 message="Not enough stock available",
             )
 
+        # print(good)
         total_price = good.price * quantity
         customer = customer_dao.get_by_id(customer_id)
         if not customer:
@@ -113,9 +116,9 @@ async def purchase_good(
         history = history_dao.create(
             {
                 "customer_id": customer_id,
-                "product_id": good.id,
+                "product_id": product_id,
                 "quantity": quantity,
-                "total_price": total_price,
+                "total": total_price,
             }
         )
 
@@ -123,9 +126,7 @@ async def purchase_good(
             status_code=status.HTTP_200_OK,
             message="Purchase successful",
             data={
-                "customer": updated_customer,
-                "inventory": updated_inventory,
-                "history": history,
+                "history": history.model_dump(),
             },
         )
     except Exception as e:
@@ -181,7 +182,7 @@ async def get_product_history(
         )
 
 
-def merge_dicts(dict_list: List[ModelType]) -> Dict[str, Any]:  # type: ignore
+def merge_dicts(dict_list: List[ModelType]) -> Dict[str, Any]:
     result: Dict[str, Any] = {}
     for dictionary in dict_list:
         result.update(dictionary)

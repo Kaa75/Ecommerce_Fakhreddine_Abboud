@@ -2,6 +2,7 @@
 Contains the core authentication functions for user registration and login,
 interacting with the database and handling authentication tokens.
 """
+
 from fastapi import HTTPException, status
 from gotrue import AuthResponse as GoTrueAuthResponse  # type: ignore
 from gotrue.errors import AuthApiError  # type: ignore

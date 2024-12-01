@@ -22,11 +22,10 @@ class Reviews(BaseModel):
         created_at: Timestamp when the review was created.
         updated_at: Timestamp when the review was last updated.
     """
+
     id: Optional[UuidStr] = None
     product_id: UuidStr
     customer_id: UuidStr
     rating: RatingInt
     review: str
-    created_at: datetime
-    updated_at: datetime
-    status: str
+    # status: str

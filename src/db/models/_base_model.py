@@ -16,6 +16,7 @@ class BaseModel(PydanticBaseModel):
     Methods:
         model_validate_partial: Validates and partially updates the model with provided data.
     """
+
     @classmethod
     def model_validate_partial(cls, data: dict[str, Any]) -> "BaseModel":
         _data = {}

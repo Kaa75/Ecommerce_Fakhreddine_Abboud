@@ -21,7 +21,7 @@ customers_router = BaseRouter[Customer](
 ).build_router()
 
 
-@customers_router.put("/{id}")
+@customers_router.put("/deduct/{id}")
 async def deduct_money(
     id: UuidStr,
     amount: PositiveFloat,
@@ -57,9 +57,12 @@ async def deduct_money(
             message=str(e),
         )
 
+
 @customers_router.put("/add_money/{id}")
 async def add_money_to_wallet(
-    id: UuidStr, money: PositiveFloat, dao: BaseDAO = Depends(get_customer_dao)
+    id: UuidStr,
+    money: PositiveFloat,
+    dao: BaseDAO[Customer] = Depends(get_customer_dao),
 ) -> APIResponse:
     """
     Adds a specified amount of money to the customer's wallet.

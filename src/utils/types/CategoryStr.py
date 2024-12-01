@@ -22,4 +22,4 @@ def validate_category(value: str) -> str:
     return value.lower()
 
 
-CategoryStr = Annotated[str, BeforeValidator(validate_category, "category")]
+CategoryStr = Annotated[str, BeforeValidator(validate_category)]
